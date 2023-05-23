@@ -3,7 +3,7 @@ name: 'Dispatch to E2E Tests Repo'
 on:
   workflow_call:
     inputs:
-      repo:
+      service_name:
         type: string
         required: true
 
@@ -18,4 +18,4 @@ jobs:
           token: ${{ secrets.MY_PAT }}
           repository: nefotatari/CypressMiniProject
           event-type: start-example-workflow
-          client-payload: '{"service": "${{ inputs.repo }}"}'
+          client-payload: '{"service": "${{ inputs.service_name }}"}'
