@@ -1,0 +1,18 @@
+name: 'Dispatch to E2E Tests Repo'
+
+on:
+  workflow_call:
+    inputs:
+      repo:
+        type: string
+        required: true
+
+jobs:
+  e2e_dispatch:
+    - name: 'Repository Dispatch to e2e-tests'
+      uses: peter-evans/repository-dispatch@v1
+      with:
+        token: ${{ secrets.MY_PAT }}
+        repository: nefotatari/CypressMiniProject
+        event-type: start-example-workflow
+        client-payload: '{"service": "${{ inputs.repo }}"}'
